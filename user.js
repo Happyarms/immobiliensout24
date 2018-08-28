@@ -2,12 +2,12 @@
 // @name         immobilienscout24
 // @namespace    http://tampermonkey.net/
 // @version      0.4
-// @downloadURL  
+// @updateURL    https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
+// @downloadURL  https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @description  try to take over the world!
 // @author       Dennis Gloger
 // @match        https://www.immobilienscout24.de/Suche/*
 // @grant        none
-// _@require http://code.jquery.com/jquery-1.12.4.min.js
 // @run-at document-end
 // ==/UserScript==
 
