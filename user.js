@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         immobilienscout24
 // @namespace    http://tampermonkey.net/
-// @version      0.4
+// @version      0.5
 // @updateURL    https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @description  try to take over the world!
@@ -25,6 +25,7 @@ function custom_filter(){
     var gesamtpreis = '123';
     var quadradmeter = '123';
     var entfernungskosten = '123';
+    var content = '';
     $('.result-list-entry__data > a').each(function(blubb,e){
 
        //$.get($(this).attr('href')), function(data){
@@ -39,21 +40,34 @@ function custom_filter(){
            }else{
                energiewert = '150';
            }
+           $(preis).parent().parent().prepend('<div style=";width: 100%;"></div>');
+           $(preis).parent().parent().prepend('<dl class="grid-item result-list-entry__primary-criterion gt3" role="presentation"><dd class="font-nowrap font-line-xs">'+parseInt(energiewert)+'</dd><dt class="font-s onlyLarge">Energiewert</dt></dl>');
            energiewert = energiewert.replace(' kWh/(m²*a)','')
            energiewert = (parseFloat(energiewert) * parseFloat(quadradmeter)) / 12 / 11;
            //console.log(quadradmeter);
-           $(e).next().append(parseInt(energiewert));
+           //$(e).next().append(parseInt(energiewert));
            preis2 = (parseInt(preis2)+25000) / 250;
            preis2 = parseInt(preis2) + parseInt(energiewert);
-           $(preis).append('<br />ca.: '+ preis2);
+           $(preis).parent().parent().prepend('<dl class="grid-item result-list-entry__primary-criterion gt3" role="presentation"><dd class="font-nowrap font-line-xs">'+parseInt(energiewert)+'</dd><dt class="font-s onlyLarge">Heizkosten</dt></dl>');
+           //$(preis).parent().parent().prepend('<div style=";width: 100%;"></div>');
+           $(preis).parent().parent().prepend('<dl class="grid-item result-list-entry__primary-criterion gt3" role="presentation"><dd class="font-nowrap font-line-xs">'+preis2+'</dd><dt class="font-s onlyLarge">Kreditrate</dt></dl>');
+
+           //$(preis).append('<br />ca.: '+ preis2);
 
            entfernungskosten = $(e).next().children('div:first').text().replace(' km|','');
            entfernungskosten = (parseFloat(entfernungskosten) * 40) * 0.3;
-           $(preis).append('<br />Farkost.: '+ parseInt(entfernungskosten));
+           //
+           $(preis).parent().parent().prepend('<dl class="grid-item result-list-entry__primary-criterion gt3" role="presentation"><dd class="font-nowrap font-line-xs">'+parseInt(entfernungskosten)+'</dd><dt class="font-s onlyLarge">Fahrkosten</dt></dl>');
+           //$(preis).append('<br />Farkost.: '+ parseInt(entfernungskosten));
+           //
            entfernungskosten = parseFloat(entfernungskosten) + parseInt(preis2);
-           $(preis).append('<br />Gesamt.: '+ entfernungskosten);
-           if(entfernungskosten > 1200){
-              // $(e).parent().parent().parent().parent().parent().parent().fadeOut(2000);
+           //
+           $(preis).parent().parent().append('<div style=";width: 100%;"></div>');
+           $(preis).parent().parent().append('<dl class="grid-item result-list-entry__primary-criterion gt3" role="presentation"><dd class="font-nowrap font-line-xs">'+parseInt(entfernungskosten)+'</dd><dt class="font-s onlyLarge">Gesamt</dt></dl>');
+           //$(preis).append('<br />Gesamt.: '+ entfernungskosten);
+           //
+           if(parseInt(entfernungskosten) > 1200){
+               //$(e).parent().parent().parent().parent().parent().parent().fadeOut(2000);
            }
        });
             //energiewert
