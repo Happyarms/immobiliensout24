@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         immobilienscout24
 // @namespace    http://tampermonkey.net/
-// @version      0.6
+// @version      0.6.1
 // @updateURL    https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @description  try to take over the world!
@@ -46,7 +46,7 @@ function custom_filter(){
            energiewert = (parseFloat(energiewert) * parseFloat(quadradmeter)) / 12 / 11;
            //console.log(quadradmeter);
            //$(e).next().append(parseInt(energiewert));
-           preis2 = (parseInt(preis2)+25000) / 250;
+           preis2 = (parseInt(preis2)+27000) / 250;
            preis2 = parseInt(preis2) + parseInt(energiewert);
            $(preis).parent().parent().prepend('<dl class="grid-item result-list-entry__primary-criterion gt3" role="presentation"><dd class="font-nowrap font-line-xs">'+parseInt(energiewert)+'</dd><dt class="font-s onlyLarge">Heizkosten</dt></dl>');
            //$(preis).parent().parent().prepend('<div style=";width: 100%;"></div>');
