@@ -12,12 +12,6 @@
 // ==/UserScript==
 
 
-/*
-$.get("https://helpdesk.jtl-software.de/otrs/index.pl?Action=AgentTicketLockedView;Filter=All;View=;SortBy=Age;OrderBy=Up;ChallengeToken=l5xRyoHPaUij7ACEKzB4pJI2wWMDykJH;ColumnFilterState=4;", function(data, status){
-    if($(data).find('.MasterAction').length > 0){
-        $('#ToolBar').append('<li><a href="https://helpdesk.jtl-software.de/otrs/index.pl?Action=AgentTicketLockedView;Filter=All;View=;SortBy=Age;OrderBy=Up;ChallengeToken=l5xRyoHPaUij7ACEKzB4pJI2wWMDykJH;ColumnFilterState=4;"><i class="fa fa-lock"></i><span class="Counter">'+$(data).find('.MasterAction').length+'</span></a></li>');
-    }
-*/
 function custom_filter(){
     var energiewert = '123';
     var preis = '123';
