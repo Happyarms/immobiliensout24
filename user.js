@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         immobilienscout24
 // @namespace    http://tampermonkey.net/
-// @version      0.6.2
+// @version      0.6.3
 // @updateURL    https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @description  try to take over the world!
 // @author       Dennis Gloger
-// @match        https://www.immobilienscout24.de/Suche/*
+// @match        https://www.immobilienscout24.de/Suche/*/Haus-Kauf/*
 // @grant        none
 // @run-at document-end
 // ==/UserScript==
@@ -22,7 +22,6 @@ function custom_filter(){
     var content = '';
     $('.result-list-entry__data > a').each(function(blubb,e){
 
-       //$.get($(this).attr('href')), function(data){
        $.get($(this).attr('href'), function(data, status){
            preis = $(e).parent().children().children().children().children('.result-list-entry__primary-criterion:first').children('dd');
            preis2 = preis.text().replace('€','').replace('.','');
