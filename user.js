@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         immobilienscout24
 // @namespace    http://tampermonkey.net/
-// @version      0.6.3
+// @version      0.6.4
 // @updateURL    https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @description  try to take over the world!
@@ -20,6 +20,7 @@ function custom_filter(){
     var quadradmeter = '123';
     var entfernungskosten = '123';
     var content = '';
+    $('.result-list-entry--with-logo').fadeOut(200);
     $('.result-list-entry__data > a').each(function(blubb,e){
 
        $.get($(this).attr('href'), function(data, status){
