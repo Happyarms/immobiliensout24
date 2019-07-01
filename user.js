@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         immobilienscout24
 // @namespace    http://tampermonkey.net/
-// @version      0.6.4
+// @version      0.6.5
 // @updateURL    https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @description  try to take over the world!
@@ -20,9 +20,22 @@ function custom_filter(){
     var quadradmeter = '123';
     var entfernungskosten = '123';
     var content = '';
-    $('.result-list-entry--with-logo').fadeOut(200);
-    $('.result-list-entry__data > a').each(function(blubb,e){
+$('.font-white').each(function(blubb,e){
+    $(this).parent().fadeOut(100);
+});
+$('.result-list-entry__address .font-ellipsis').each(function(blubb,e){
 
+    if($(this).text().indexOf("XXXX") >= 0){
+        $(this).parent().parent().parent().parent().parent().parent().parent().parent().fadeOut(100);
+    }
+});
+
+
+    $('.result-list-entry__data > a').each(function(blubb,e){
+/*console.log($(this).parent().parent().prev().css("background-color"));
+        if($(this).parent().parent().prev().css("color") == 'gba(0, 0, 0, 0)'){
+            $(this).parent().parent().parent().fadeOut(2000);
+        }*/
        $.get($(this).attr('href'), function(data, status){
            preis = $(e).parent().children().children().children().children('.result-list-entry__primary-criterion:first').children('dd');
            preis2 = preis.text().replace('€','').replace('.','');
