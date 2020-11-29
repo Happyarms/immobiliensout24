@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         immobilienscout24
 // @namespace    http://tampermonkey.net/
-// @version      0.6.9.1
+// @version      0.6.9.2
 // @updateURL    https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @downloadURL  https://raw.githubusercontent.com/Happyarms/immobiliensout24/master/user.js
 // @description  try to take over the world!
@@ -47,7 +47,8 @@ $('.font-white').each(function(blubb,e){
 $('.result-list-entry__address .font-ellipsis').each(function(blubb,e){
 
     if($(this).text().toUpperCase().indexOf("X,") >= 0){
-        $(this).parent().parent().parent().parent().parent().parent().parent().parent().fadeOut(100);
+        $(this).parent().parent().parent().parent().parent().parent().parent().fadeOut(300);
+        //$(this).parent().parent().parent().parent().parent().parent().parent().addClass('Blubber');
     }
 });
 
